@@ -30,6 +30,6 @@ npm i
 npm run build
 
 echo "Deploying website to S3..."
-aws s3 sync build/ s3://template.zacharyjklein.com
+aws s3 sync build/ s3://zacharyjklein.com
 
 echo "Done!"

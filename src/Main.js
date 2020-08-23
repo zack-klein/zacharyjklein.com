@@ -1,6 +1,7 @@
 import React from 'react';
 import Base from './Base'
 import Home from './Home';
+import Cookies from 'js-cookie'
 
 
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -29,9 +30,9 @@ const lightTheme = createMuiTheme({
   },
 });
 
-const prefersDark = {
-  true: darkTheme,
-  false: lightTheme,
+const themes = {
+  "dark": darkTheme,
+  "light": lightTheme,
 }
 
 const Main = () => {
@@ -43,13 +44,29 @@ const Main = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  // Handle Dark Mode
+  var checked = false;
+  var currentTheme = "light";
+  if (Cookies.get("theme") === "dark") {
+    checked = true;
+    currentTheme = "dark";
+  };
+
   const [state, setState] = React.useState({
-    checked: false,
+    checked: checked,
+    theme: themes[currentTheme],
     resumaydayData: null,
   });
 
   const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+
+    if (event.target.checked) {
+      Cookies.set("theme", "dark");
+    } else {
+      Cookies.set("theme", "light");
+    }
+    setState({ ...state, [event.target.name]: event.target.checked, theme: themes[Cookies.get("theme")] });
   };
 
   return (
@@ -59,7 +76,7 @@ const Main = () => {
       state={state}
       drawerOpener={handleDrawerOpen}
       drawerCloser={handleDrawerClose}
-      currentTheme={prefersDark[state.checked]}
+      currentTheme={state.theme}
       drawerOpen={open}
     />
   );

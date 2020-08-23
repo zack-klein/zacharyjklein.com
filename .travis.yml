@@ -1,0 +1,16 @@
+language: python
+branches:
+  only:
+  - master
+services:
+- docker
+install:
+- chmod +x ./scripts/test.sh
+- chmod +x ./scripts/publish.sh
+script:
+- if [[ $TRAVIS_EVENT_TYPE == "pull_request" ]] ; then ./scripts/test.sh ; fi
+- if [[ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH == "master" ]] ; then ./scripts/publish.sh
+  ; fi
+notifications:
+  slack:
+    secure: Cjqmkf/MZERHi+s5w5vQjmOMgA6/b8V9rVXVQ0SuXhvb8mzPfGymBjCefzZZSTJlCBqIe3OGBxFcN+SGBOT7r/0UqaPmJiQva0397T5OesnXTs7BAkKs2Mtt8NUb68iqXAM2Nw3lOlbENRrPrEKzIVbsOkrt7OaseAL9Ld4508sEOvj9ijBed1mjwAjJ3YrREI5mYSVX1JCynd+8la82tzqDiufO+13Z31HtKm0TVOpwm86vcR8Fn+tfS8XP1qIDBtJZDTlkZUqAY5HK8ATqWFGk2FDcjZAhmIpVNVKqu805id9iC8lBU/z1q3C+8JPiitkFnoiErx1ilBOsU6u/8ceVdqKg2LafblVSCCmH44AetO7JZBhuy4YhO3zUhjY1dJW5szDZ/KNSRmbNxd5MTM2uGddgWEQPkwWEQM1athyZ3q0lFHHSRU3poGUF46lhg3q91LA2PCGJhNSZIGN3KxqpOqdspyHdA4aGxnE9WT6a+dLXwSatxqoBPPT9JNwxOQFYIBdQv+IHUYHU47ea1lCOxNzeNN54jtDTH+Rni0Ho6zZzHSrQo7ovKdgHpSu/HAXbmi44e20w6Y0S/oC+sd00ed/ODX2NvMCy5ETWTvgZbKznAIpXV+UFwIyFb5yft/CnBSR4OuCa116Dq8FqskFKqcIcQInGVpwaEeVUgXs=

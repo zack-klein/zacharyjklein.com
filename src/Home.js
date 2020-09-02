@@ -76,6 +76,13 @@ let projects = [
     github: "https://github.com/zack-klein/zacks-todos",
     ext: "https://todo.zacharyjklein.com/"
   },
+  {
+    id: 9,
+    name: "Karen's Fantasy Outlook",
+    description: "An analytics platform for my ESPN Fantasy Football league.",
+    github: "https://zacharyjklein.com/",
+    ext: "https://karens-fantasy-outlook.com/"
+  },
 ];
 
 

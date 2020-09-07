@@ -21,6 +21,13 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 
 let projects = [
   {
+    id: 9,
+    name: "Karen's Fantasy Outlook",
+    description: "An analytics platform for my ESPN Fantasy Football league.",
+    github: "https://zacharyjklein.com/",
+    ext: "https://karens-fantasy-outlook.com/"
+  },
+  {
     id: 1,
     name: 'Resumayday',
     description: "Applying for jobs online these days is a total crapshoot. Let's game the system.",
@@ -34,13 +41,13 @@ let projects = [
     github: 'https://github.com/zack-klein/zacharyjklein-api/blob/master/northface/keyme.py',
     ext: "https://keyme.zacharyjklein.com"
   },
-  {
-    id: 3,
-    name: "Polling for President",
-    description: 'Skeptical of polling in the 2020 Presidential Race? So am I.',
-    github: 'https://github.com/zack-klein/zacharyjklein-api/blob/master/northface/pollin.py',
-    ext: "https://polling-for-president.zacharyjklein.com/"
-  },
+  // {
+  //   id: 3,
+  //   name: "Polling for President",
+  //   description: 'Skeptical of polling in the 2020 Presidential Race? So am I.',
+  //   github: 'https://github.com/zack-klein/zacharyjklein-api/blob/master/northface/pollin.py',
+  //   ext: "https://polling-for-president.zacharyjklein.com/"
+  // },
   {
     id: 4,
     name: 'Sentimenter',
@@ -48,40 +55,33 @@ let projects = [
     github: 'https://github.com/zack-klein/zacharyjklein-api/blob/master/northface/sentimenter.py',
     ext: "https://sentimenter.zacharyjklein.com"
   },
-  {
-    id: 5,
-    name: 'Coronavirus Dashboard',
-    description: 'Watch COVID-19 spread around the world.',
-    github: 'https://github.com/zack-klein/zacharyjklein-api/blob/master/northface/corona.py',
-    ext: "https://coronavirus-dashboard.zacharyjklein.com/"
-  },
-  {
-    id: 6,
-    name: "Stocker",
-    description: "Stalk some stocks!",
-    github: 'https://github.com/zack-klein/stocker',
-    ext: "https://stocker.zacharyjklein.com"
-  },
-  {
-    id: 7,
-    name: "Lending Club",
-    description: "How do Americans borrow money?",
-    github: 'https://github.com/zack-klein/lendingclub',
-    ext: "https://lending-club.zacharyjklein.com/"
-  },
+  // {
+  //   id: 5,
+  //   name: 'Coronavirus Dashboard',
+  //   description: 'Watch COVID-19 spread around the world.',
+  //   github: 'https://github.com/zack-klein/zacharyjklein-api/blob/master/northface/corona.py',
+  //   ext: "https://coronavirus-dashboard.zacharyjklein.com/"
+  // },
+  // {
+  //   id: 6,
+  //   name: "Stocker",
+  //   description: "Stalk some stocks!",
+  //   github: 'https://github.com/zack-klein/stocker',
+  //   ext: "https://stocker.zacharyjklein.com"
+  // },
+  // {
+  //   id: 7,
+  //   name: "Lending Club",
+  //   description: "How do Americans borrow money?",
+  //   github: 'https://github.com/zack-klein/lendingclub',
+  //   ext: "https://lending-club.zacharyjklein.com/"
+  // },
   {
     id: 8,
     name: "Zack's To Do's",
     description: "Every developer's first project.",
     github: "https://github.com/zack-klein/zacks-todos",
     ext: "https://todo.zacharyjklein.com/"
-  },
-  {
-    id: 9,
-    name: "Karen's Fantasy Outlook",
-    description: "An analytics platform for my ESPN Fantasy Football league.",
-    github: "https://zacharyjklein.com/",
-    ext: "https://karens-fantasy-outlook.com/"
   },
 ];
 

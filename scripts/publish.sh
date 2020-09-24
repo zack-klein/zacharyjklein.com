@@ -19,8 +19,9 @@ terraform apply -auto-approve
 cd ../
 
 echo "Building website..."
-npm i
-npm run build
+mkdir -p ./build/
+STATIC_DIR=static/ python manage.py collectstatic --no-input
+STATIC_DIR=static/ python manage.py distill-local build --force --skip-checks
 
 echo "Deploying website to S3..."
 aws s3 sync build/ s3://zacharyjklein.com

@@ -3,8 +3,7 @@
 set -e
 
 echo "Setting up aws cli and node..."
-pip install awscli
-sudo apt-get update && sudo apt-get install nodejs -y
+pip install -r requirements.txt
 
 echo "Installing Terraform..."
 cd ./terraform/

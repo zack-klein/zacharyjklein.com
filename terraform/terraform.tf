@@ -49,7 +49,7 @@ resource "aws_ses_domain_identity" "email" {
 
 resource "aws_route53_record" "example_amazonses_verification_record" {
   zone_id = data.aws_route53_zone.zone.zone_id
-  name    = "_amazonses.example.com"
+  name    = "_amazonses.zacharyjklein.com"
   type    = "TXT"
   ttl     = "600"
   records = [aws_ses_domain_identity.email.verification_token]

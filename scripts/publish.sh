@@ -2,8 +2,10 @@
 
 set -e
 
-echo "Setting up aws cli and node..."
-pip install -r requirements.txt
+echo "Setting up aws cli and yarn..."
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn -y
 
 echo "Installing Terraform..."
 cd ./terraform/
@@ -18,9 +20,7 @@ terraform apply -auto-approve
 cd ../
 
 echo "Building website..."
-mkdir -p ./build/
-STATIC_DIR=static/ python manage.py collectstatic --no-input
-STATIC_DIR=static/ python manage.py distill-local build --force --skip-checks
+yarn build
 
 echo "Deploying website to S3..."
 aws s3 sync build/ s3://zacharyjklein.com

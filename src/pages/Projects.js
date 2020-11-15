@@ -48,6 +48,12 @@ const projects = [
     buttonText: "Check it out",
   },
   {
+    name: 'zacharyjklein.com',
+    description: 'This website! Written in React and statically hosted in S3.',
+    url: 'https://github.com/zack-klein/zacharyjklein.com',
+    buttonText: "Check it out",
+  },
+  {
     name: 'Algos',
     description: 'Algorithm and Data Structures practice.',
     url: 'https://github.com/zack-klein/algos',

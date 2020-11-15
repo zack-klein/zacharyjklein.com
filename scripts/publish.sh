@@ -21,7 +21,6 @@ terraform apply -auto-approve
 cd ../
 
 echo "Building website..."
-yarn install --check-files --ignore-engines
 yarn build
 
 echo "Deploying website to S3..."

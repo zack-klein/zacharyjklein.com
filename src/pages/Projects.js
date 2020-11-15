@@ -1,7 +1,8 @@
-import { Button, Card, Container, Icon } from 'semantic-ui-react';
+import { Button, Card, Container, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import FadeIn from 'react-fade-in';
 
+import profilePic from '../assets/profilePic.png';
 
 const projects = [
   {
@@ -86,6 +87,7 @@ export default function Projects() {
   var cards = buildCards(projects);
   return (
     <Container textAlign="center" text style={{ marginTop: '3em' }}>
+      <Image centered src={ profilePic } size='medium' rounded />
       <h1 align="center">Some things I've built</h1>
       <Button align="center" as={ Link } to="/">
         <Button.Content visible><Icon name="arrow left" /></Button.Content>

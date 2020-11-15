@@ -54,3 +54,16 @@ resource "aws_route53_record" "example_amazonses_verification_record" {
   ttl     = "600"
   records = [aws_ses_domain_identity.email.verification_token]
 }
+
+# Bucket for blog posts
+resource "aws_s3_bucket" "b" {
+  bucket = "zacharyjklein-blog"
+  acl    = "public-read"
+
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "HEAD"]
+    allowed_origins = ["http://localhost:3000", "https://zacharyjklein.com"]
+    max_age_seconds = 3000
+  }
+}

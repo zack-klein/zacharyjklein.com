@@ -1,6 +1,6 @@
 import { Button, Card, Container, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import FadeIn from 'react-fade-in';
+import { buildCards } from '../components/Cards';
 
 import profilePic from '../assets/profilePic.png';
 
@@ -9,78 +9,51 @@ const projects = [
     name: 'Magellan',
     description: 'A simple but powerful data catalog built using Flask + Elasticsearch.',
     url: 'https://github.com/zack-klein/magellan',
+    buttonText: "Check it out",
   },
   {
     name: 'Health Checker',
     description: 'A simple utility to make sure websites are alive and well.',
     url: 'https://github.com/zack-klein/health-checker',
+    buttonText: "Check it out",
   },
   {
     name: "Karen's Fantasy Outlook",
     description: 'An analytics platform for my Fantasy Football league.',
     url: 'https://karens-fantasy-outlook.com/',
+    buttonText: "Check it out",
   },
   {
     name: 'Resumayday',
     description: 'A job searching tool that uses simple machine learning.',
     url: 'https://resumayday.zacharyjklein.com/',
+    buttonText: "Check it out",
   },
   {
     name: 'Key Me',
     description: 'Use natural language processing to extract words from some text.',
     url: 'https://keyme.zacharyjklein.com/',
+    buttonText: "Check it out",
   },
   {
     name: 'Sentimenter',
     description: 'See what how the world feels about a certain topic.',
     url: 'https://sentimenter.zacharyjklein.com/',
+    buttonText: "Check it out",
   },
   {
     name: "Zack's To Do's",
     description: "The tried and true first project of every developer...",
     url: 'https://todo.zacharyjklein.com/',
+    buttonText: "Check it out",
   },
   {
     name: 'Algos',
     description: 'Algorithm and Data Structures practice.',
     url: 'https://github.com/zack-klein/algos',
+    buttonText: "Check it out",
   },
 ]
-
-function buildCard(project, delay) {
-  let card = (
-    <FadeIn delay={delay}>
-    <Card key={project.name} style={{ marginTop: '1em', marginLeft: '1em', }}>
-      <Card.Content>
-        <Card.Header>{project.name}</Card.Header>
-        <Card.Description>
-          {project.description}
-        </Card.Description>
-      </Card.Content>
-      <Card.Content extra>
-        <div className='ui'>
-          <Button color="blue" href={project.url}>
-            Check it out
-          </Button>
-        </div>
-      </Card.Content>
-    </Card>
-    </FadeIn>
-  );
-  return card;
-}
-
-function buildCards(cardObjs) {
-  let cards = [];
-  let firstDelay = 100;
-
-  for (var i=0; i < cardObjs.length; i++){
-    let card = buildCard(cardObjs[i], firstDelay);
-    firstDelay += 50;
-    cards.push(card);
-  };
-  return cards;
-};
 
 
 export default function Projects() {

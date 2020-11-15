@@ -22,6 +22,10 @@ export default function Home() {
             <Button.Content visible>Projects</Button.Content>
             <Button.Content hidden><Icon name="arrow right" /></Button.Content>
           </Button>
+          <Button animated='fade' as={ Link } to='/blog'>
+            <Button.Content visible>Blog</Button.Content>
+            <Button.Content hidden><Icon name="arrow right" /></Button.Content>
+          </Button>
         </div>
         <div align="center" style={{ marginTop: '1em' }}>
         <Button circular color='linkedin' icon='linkedin' href={linkedinUrl} />

@@ -6,6 +6,12 @@ import profilePic from '../assets/profilePic.png';
 
 const projects = [
   {
+    name: 'SQLAlchemy Multitenancy',
+    description: 'A quick POC of how to build a SAAS with Flask & SQLAlchemy.',
+    url: 'https://github.com/zack-klein/multi-tenant-sqlalchemy/',
+    buttonText: "Check it out",
+  },
+  {
     name: 'Magellan',
     description: 'A simple but powerful data catalog built using Flask + Elasticsearch.',
     url: 'https://github.com/zack-klein/magellan',

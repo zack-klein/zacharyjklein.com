@@ -6,8 +6,17 @@ import Post from '../components/Post';
 import profilePic from '../assets/profilePic.png';
 
 const posts = [
+  // Coming soon!
+  // {
+  //   name: 'A practical description of data mesh',
+  //   description: 'Is data mesh a practical solution or just a good idea?',
+  //   url: '/blog/posts/data-mesh-in-practice',
+  //   date: "12/5/2020",
+  //   buttonText: "Read",
+  //   s3Uri: "https://zacharyjklein-blog.s3.amazonaws.com/dataMesh.md",
+  // },
   {
-    name: 'Simple static website with S3 and React',
+    name: 'Build a simple static website',
     description: 'Spin up a React app in AWS in a few minutes.',
     url: '/blog/posts/dead-simple-react-s3',
     date: "11/15/2020",

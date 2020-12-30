@@ -6,57 +6,59 @@ I recently read [this article](https://martinfowler.com/articles/data-monolith-t
 
 # The centralized data team
 
-Before we talk about the data mesh, let's make a few assumptions about the world today.
+Before we talk about the data mesh, let's run through a fun contrived example.
 
-Assume you're the CEO of a big company. You read about fancy new data use cases every day, and after reading about a particularly earth-shattering data-driven breakthrough (maybe [this one](https://www.vox.com/future-perfect/22045713/ai-artificial-intelligence-deepmind-protein-folding)), you finally decide to take that daunting leap of faith: your company is now going to be a *data driven organization*.
+Let's say you're the CEO of a big company. You read about fancy new data use cases every day, and after reading about a particularly earth-shattering data-driven breakthrough (maybe [this one](https://www.vox.com/future-perfect/22045713/ai-artificial-intelligence-deepmind-protein-folding)), you finally decide to *do it*: your company is going to give this whole data science thing a try.
 
-You start small. You rustle together a few engineers and set them to work on building a [data lake](https://searchaws.techtarget.com/definition/data-lake#:~:text=A%20data%20lake%20is%20a,flat%20architecture%20to%20store%20data.). You know that every customer who uses your mobile app has to give a shipping address, so you set a goal to make a map of every customer who has ever bought something from your company. Your team of engineers gets to work, and they come back to you a while later with something that resembles this:
+You start small. You rustle together a few engineers and Excel geeks and set them to work. You know that every customer who uses your mobile app has to give a shipping address, so you set a goal to make a map of every customer who has ever bought something from your company. Your team of engineers gets to work, and they come back to you a while later with something that resembles this:
 
 ![dash](https://systems.jhu.edu/wp-content/uploads/2020/03/nCoV-map-Mar1320-768x385.png)
 
 (*This is [Johns Hopkins COVID-19 dashboard](https://coronavirus.jhu.edu/map.html) (not a sales dashboard), but you get the idea.*)
 
-*We have that much business in China? It really updates in real-time?* The earth stops. The ground shakes. *We're doing it! We're data-driven now!* you think to yourself.
+*We have that much business in China? Maybe all that marketing has actually done something...* The earth stops. The ground shakes. *It's not just hype!* you think to yourself. *We can do this data science thing*.
 
-You call a company-wide town hall meeting. You show this dashboard to every one of your 100,000 employees. *This is the way*, you say with a smile. They look up in shock. They have never seen a dashboard before.
+You call a company-wide town hall. You show this dashboard to every one of your 100,000 employees. *This is the way,* you say with a smile. They look up with open jaws.
 
-Suddenly, data is discovered everywhere. The marketing team realizes that their Facebook advertising campaigns are overflowing with data about customers. The HR team finds an AI bot from a startup that can do performance reviews if trained on employee data. The finance team devises a revolutionary new revenue prediction model, but the company-issued laptops *just can't take* processing the 100,000 rows the model needs to give useful predictions without crashing.
+Suddenly, data use cases are found everywhere. The marketing team realizes that their Facebook advertising campaigns are overflowing with data about your customers (*You mean that data is just there?*). The HR team finds an AI bot from a startup that can do performance reviews if trained on employee data (No more difficult conversations with employees!). The finance team hires a stats whiz who devises a revolutionary new revenue prediction model, but the company-issued laptops *just can't take* processing the 100,000 rows the model needs to give useful predictions without crashing.
 
-Your team of rustled engineers who put the initial data platform together are now drowning with requests: *Can you load dataset x for me? Can I have access to dataset y? Can I have a cloud server with 128GiB of memory?* Though they appear to be handling all these new requests with aplomb (they are rockstars, after all), they are actually suffering from severe cases of [Stanford Duck Syndrome](https://www.kqed.org/perspectives/201601138907/duck-syndrome#:~:text=At%20Stanford%20the%20term%20%E2%80%9CDuck,image%20of%20relaxed%20California%20chill.&text=Duck%20syndrome%20is%20a%20disease,effortless%20to%20the%20outside%20world.). Being the astute manager you are, you decide to reintroduce some sanity back into their lives by hiring a proper manager, a few more engineers, and a business analyst.
+Your team of rustled engineers who put the initial data platform together are suddenly drowning in requests: *Can you load dataset x for me? Can I have access to dataset y? Can I have a cloud server with 128GiB of memory?* Though they appear to be handling all these new requests with aplomb (they are rockstars, after all), they are actually suffering from severe cases of [Stanford Duck Syndrome](https://www.kqed.org/perspectives/201601138907/duck-syndrome#:~:text=At%20Stanford%20the%20term%20%E2%80%9CDuck,image%20of%20relaxed%20California%20chill.&text=Duck%20syndrome%20is%20a%20disease,effortless%20to%20the%20outside%20world.). Being the astute manager you are, you decide to reintroduce some sanity back into their lives by hiring a proper manager, a few more engineers, and a business analyst.
 
-Congratulations, you now have a *centrazlied data team*! This team can now spend all their time and energy making your organization more data driven.
+Congratulations, you now have a *centrazlied data team* in your organization! This team can now spend all their time and energy making your organization more data driven.
 
 # Some problems with the centralized data team
 
-Your company has followed a logical progression. In the end, we end up with what the Fowler blog folks call a monolithic data platform (I don't totally agree with this name, but whatever) - all data flows through one giant ingestion/transformation pipeline (and team) before becoming available for people to use in their day-to-day. It looks something like this:
+Your company has followed a logical progression - a new function (data science) has entered your business, so you set up a new team dedicated to solely performing this function.
+
+The Fowler blog folks call this a *monolithic data platform* (I don't totally agree with this name, but whatever) - all data flows through one giant ingestion/transformation pipeline (ie, the data team and their tools) before becoming available for people to use in their day-to-day. It looks something like this:
 
 ![data-platform](https://martinfowler.com/articles/data-monolith-to-mesh/big-data-platform.png)
 *(Image taken from [here](https://martinfowler.com/articles/data-monolith-to-mesh.html))*
 
-The Fowler blog folks point out a few problems with this model:
+The Fowler blog folks highlight a few problems with this model:
 
-The first problem is that it's hard to consume *all* data and store it in one standardized way that every system can comply with. The whole point of the data platform is to ingest data from a bunch of different sources, which means by definition that data will have different formats, delivery mechanisms, etc..
+The first is that, while this model feels logical, it's actually quite hard to pull off well. Most large enterprises will have a lot of data -- all of which will likely be structured and stored differently. This makes it very hard to consume *all* data and store it in one standardized way. This will lead to a lot of engineering time and effort to make "one right way" (or a few right ways) to deal with all of these different sources (ie the monolithic data platform).
 
-The second problem is that consumers in this model tend to be pretty tech-savvy (they're data consumers, after all). This means they will move fast - and may change what they want frequently. Having one central team responsible for the data platform makes these demands extremely challenging - since they will be changing constantly and only the centralized data team can make these changes materialize. Achieving ever-changing objectives like this across teams requires a TON of coordination to be done successfully.
+The second problem is that consumers of the data platform (ie other departments) will likely move fast - and, critically, they will require constant iteration, changing what they want frequently. Having one central team responsible for all data in the data platform makes meeting these demands extremely challenging. Achieving ever-changing objectives like this across teams requires a TON of coordination to be done successfully.
 
-The third (and, in my opinion, most significant) problem is how ownership is assigned in this model. I'll quote directly: *I personally don't envy the life of a data platform engineer. They need to consume data from teams who have no incentive in providing meaningful, truthful and correct data. They have very little understanding of the source domains that generate the data and lack the domain expertise in their teams. They need to provide data for a diverse set of needs, operational or analytical, without a clear understanding of the application of the data and access to the consuming domain's experts.* - taken from [here.](https://martinfowler.com/articles/data-monolith-to-mesh.html#SiloedAndHyper-specializedOwnership)
+The third (and, in my opinion, most significant) problem is how the ownership of the data and the platform are assigned in this model. I'll quote directly from the article: *[Data Platform Engineers] need to consume data from teams who have no incentive in providing meaningful, truthful and correct data. They have very little understanding of the source domains that generate the data and lack the domain expertise in their teams. They need to provide data for a diverse set of needs, operational or analytical, without a clear understanding of the application of the data and access to the consuming domain's experts.* - taken from [here.](https://martinfowler.com/articles/data-monolith-to-mesh.html#SiloedAndHyper-specializedOwnership) Having the data team *just do everything* puts an incredible weight on their shoulders, and, more importantly - it doesn't incentivize accountability of good data on the right people (the source teams that provide the data).
 
-These are all very real problems in an enterprise's data platform. This has led to a clever new paradigm... the *data mesh*!
+These are all very real problems in an enterprise's data platform. This leads us to... the *distributed data mesh*!
 
 # The distributed data mesh
 
 There are a few core ideas to the data mesh:
 - Domain expertise drives "data products"
-- Data infrastructure as a platform
-- Open standards to control the chaos
+- Data infrastructure is provided as a service via a platform
+- Open standards control the chaos
 
-Let's talk about what these mean in practice.
+Let's talk walk through these in practice.
 
 ## Domain expertise drives domain products
 
-Rather than have one centralized data team who handles all data ingestion from every data source, the data mesh model suggests **embedding a data-focused engineer and product owner on each domain team with data needs**. In other words, a mini data team (a Data Engineer or two and a Data Product Owner) is assigned to the marketing team. Another is assigned to the finance team. And another to HR.
+Rather than have one centralized data team who handles all data ingestion from every data source, the data mesh model suggests **embedding a data-focused engineer and product owner on each domain team that has data needs**. In other words, a mini data team (a Data Engineer or two and a Data Product Owner) are assigned to the marketing team. Another is assigned to the finance team. And another to HR (etc.).
 
-The job of these mini teams are to create data products for their team specifically. This has the major benefit of allowing the engineers and product owners to build domain expertise while also contributing data-driven solutions (these were two separate jobs in the previous model).
+The job of these mini teams is to create data products for their team specifically. This has the major benefit of allowing the engineers and product owners to build domain expertise while also contributing data-driven solutions that are available to their team and potentially others.
 
 The marketing team wants to run Airflow on Kubernetes and the Finance team wants to run Kafka on AWS MSK? Sure - no problem, each respective data engineer can handle this (using the tools created by the data infrastructure team, we'll talk about that next). The major paradigm shift here is that these choices become implementation details specific to each domain - the decision to use one tool on one team doesn't have any effect on another team (unless that's desired or intentional).
 

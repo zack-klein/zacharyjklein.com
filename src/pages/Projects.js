@@ -6,6 +6,12 @@ import profilePic from '../assets/profilePic.png';
 
 const projects = [
   {
+    name: 'Erasmo',
+    description: 'A nifty online platform to simulate trading fake stocks.',
+    url: 'https://erasmo.zacharyjklein.com/',
+    buttonText: "Check it out",
+  },
+  {
     name: 'SQLAlchemy Multitenancy',
     description: 'A quick POC of how to build a SAAS with Flask & SQLAlchemy.',
     url: 'https://github.com/zack-klein/multi-tenant-sqlalchemy/',

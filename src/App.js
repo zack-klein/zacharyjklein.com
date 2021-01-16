@@ -1,12 +1,11 @@
-import 'semantic-ui-css/semantic.min.css'
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import "semantic-ui-css/semantic.min.css";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Home from './pages/Home';
-import About from './pages/About';
-import Projects from './pages/Projects';
-import Blog from './pages/Blog';
-import Footer from './components/Footer';
-
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Blog from "./pages/Blog";
+import Footer from "./components/Footer";
 
 export default function App() {
   return (
@@ -25,7 +24,6 @@ export default function App() {
           <Home />
         </Route>
       </Switch>
-      <Footer />
     </BrowserRouter>
   );
 }

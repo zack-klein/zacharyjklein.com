@@ -1,4 +1,4 @@
-import "semantic-ui-css/semantic.min.css";
+import "semantic-ui-less/semantic.less";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from "./pages/Home";

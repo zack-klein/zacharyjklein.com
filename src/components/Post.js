@@ -12,7 +12,7 @@ import {
 } from "semantic-ui-react";
 import FadeIn from "react-fade-in";
 
-import profilePic from "../assets/profilePic.png";
+import profilePic from "../assets/profilePic.jpeg";
 import Footer from "./Footer";
 
 // This is a little hacky...

@@ -2,7 +2,7 @@ import { Button, Container, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import FadeIn from "react-fade-in";
 
-import profilePic from "../assets/profilePic.png";
+import profilePic from "../assets/profilePic.jpeg";
 import Footer from "../components/Footer";
 
 export default function About() {

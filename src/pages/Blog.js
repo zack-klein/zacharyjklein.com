@@ -3,7 +3,7 @@ import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import { buildCards } from "../components/Cards";
 import Post from "../components/Post";
 
-import profilePic from "../assets/profilePic.png";
+import profilePic from "../assets/profilePic.jpeg";
 import Footer from "../components/Footer";
 
 const posts = [

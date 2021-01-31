@@ -18,7 +18,7 @@ export default function Home() {
         </h1>
         <div align="center" style={{ marginTop: "1em" }}>
           <p>
-            I'm a data engineer working for{" "}
+            I'm a data engineer in New York City currently working for{" "}
             <a href="https://blackstone.com/">Blackstone</a>. This website is
             where I publish random blog posts and projects that I work on in my
             free time. Enjoy!

@@ -7,6 +7,21 @@ import Footer from "../components/Footer";
 
 const projects = [
   {
+    name: "Comprendo",
+    description: "A cool Machine Learning tool to scrape entites from Tweets.",
+    url: "https://comprendo.zacharyjklein.com/",
+    buttonText: "Check it out",
+    tags: [
+      { name: "Machine Learning", color: "teal" },
+      { name: "React", color: "blue" },
+      { name: "AWS Lambda", color: "orange" },
+      { name: "Terraform", color: "purple" },
+      { name: "AWS CDK", color: "green" },
+      { name: "Python", color: "orange" },
+      { name: "JavaScript", color: "yellow" },
+    ],
+  },
+  {
     name: "Erasmo",
     description: "A nifty online platform to simulate trading fake stocks.",
     url: "https://erasmo.zacharyjklein.com/",
